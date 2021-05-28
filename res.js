@@ -6,6 +6,7 @@ exports.ok = function (values, res) {
     values: values,
   };
 
+  // res.status(200).json(values);
   res.json(data);
   res.end();
 };

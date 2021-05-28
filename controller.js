@@ -88,3 +88,23 @@ exports.hapusMahasiswa = function (req, res) {
     }
   );
 };
+
+// CONTOH PENGGUNAAN ARROW FUNCTION
+// const tambahMahasiswa = (req, res) => {
+//   const nim = req.body.nim;
+//   const nama = req.body.nama;
+//   const jurusan = req.body.jurusan;
+
+//   connection.query(
+//     "INSERT INTO mahasiswa (nim, nama, jurusan) VALUES(?,?,?)",
+//     [nim, nama, jurusan],
+//     (error, rows, fields) => {
+//       if (error) {
+//         return console.log(error);
+//       }
+//       response.ok("Berhasil Menambahkan Data!", res);
+//     }
+//   );
+// };
+
+// module.exports = tambahMahasiswa;
