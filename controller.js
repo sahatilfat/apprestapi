@@ -89,6 +89,20 @@ exports.hapusMahasiswa = function (req, res) {
   );
 };
 
+// menampilkan matakuliah group
+exports.tampilgroupmatakuliah = function (req, res) {
+  connection.query(
+    "SELECT mahasiswa.id_mahasiswa, mahasiswa.nim, mahasiswa.nama, mahasiswa.jurusan, matakuliah.matakuliah, matakuliah.sks FROM krs INNER JOIN mahasiswa USING(id_mahasiswa) INNER JOIN matakuliah USING(id_matakuliah) ORDER BY mahasiswa.id_mahasiswa",
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        response.oknested(rows, res);
+      }
+    }
+  );
+};
+
 // CONTOH PENGGUNAAN ARROW FUNCTION
 // const tambahMahasiswa = (req, res) => {
 //   const nim = req.body.nim;
