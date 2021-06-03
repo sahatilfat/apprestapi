@@ -62,6 +62,7 @@ exports.login = function (req, res) {
         var token = jwt.sign({ rows }, config.secret, { expiresIn: 1440 });
 
         id_user = rows[0].id;
+        username = rows[0].username;
 
         var data = {
           id_user: id_user,
@@ -82,6 +83,7 @@ exports.login = function (req, res) {
               message: "Token JWT tergenerate",
               token: token,
               currUser: data.id_user,
+              user: username,
             });
           }
         });
