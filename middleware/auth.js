@@ -59,10 +59,20 @@ exports.login = function (req, res) {
       console.log(error);
     } else {
       if (rows.length == 1) {
-        var token = jwt.sign({ rows }, config.secret, { expiresIn: 1440 });
+        var token = jwt.sign(
+          { rows },
+          config.secret,
+          // ubah expires dalam ms
+          { expiresIn: 30000 }
+        );
 
         id_user = rows[0].id;
+        //1 tambahkan row username
         username = rows[0].username;
+        //2 tambahkan row role
+        role = rows[0].role;
+        //3 variabel expires
+        var expired = 30000;
 
         var data = {
           id_user: id_user,
@@ -82,6 +92,8 @@ exports.login = function (req, res) {
               success: true,
               message: "Token JWT tergenerate",
               token: token,
+              // 4 tambahkan expired time
+              expires: expired,
               currUser: data.id_user,
               user: username,
             });
